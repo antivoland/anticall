@@ -1,5 +1,8 @@
 package system.incall.model;
 
+/**
+ * @see <a href="https://wiki.freeswitch.org/wiki/Channel_States">https://wiki.freeswitch.org/wiki/Channel_States</a>
+ */
 public enum ChannelState {
     /**
      * Channel is newly created.

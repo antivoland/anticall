@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import system.incall.guice.EslModule;
 import system.incall.guice.MorphiaModule;
 import system.incall.model.Event;
+import system.incall.model.EventConsumer;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -24,12 +25,18 @@ public class Main {
         Client eslClient = App.injector.getInstance(Client.class);
         eslClient.setEventSubscriptions("plain", "all");
 
+        Event.API.setConsumer(new EventConsumer() {
+            @Override
+            public void consume(EslEvent event) {
+                // log.info(event.toString());
+            }
+        });
+
         eslClient.addEventListener(new IEslEventListener() {
             @Override
             public void eventReceived(EslEvent event) {
-                Event e = Event.valueOf(event.getEventName());
-                log.info("Event received [{}]", e.name());
-                log.info("==========================================================================");
+                Event.valueOf(event.getEventName()).consume(event);
+                log.info("================================================================================");
             }
 
             @Override

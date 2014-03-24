@@ -1,6 +1,9 @@
 package system.incall.model;
 
+import org.freeswitch.esl.client.transport.event.EslEvent;
+
 /**
+ * @see <a href="https://wiki.freeswitch.org/wiki/Event_List">https://wiki.freeswitch.org/wiki/Event_List</a>
  * @see <a href="http://patorjk.com/software/taag/#p=display&f=Jerusalem&t=CHANNEL%0ASYSTEM%0AOTHER%0AUNDOCUMENTED">http://patorjk.com/software/taag/#p=display&f=Jerusalem&t=CHANNEL%0ASYSTEM%0AOTHER%0AUNDOCUMENTED</a>
  */
 public enum Event {
@@ -335,5 +338,16 @@ public enum Event {
      */
     DEL_SCHEDULE,
 
-    EXE_SCHEDULE
+    EXE_SCHEDULE;
+
+    private EventConsumer consumer;
+
+    public void setConsumer(EventConsumer consumer) {
+        this.consumer = consumer;
+    }
+
+    public void consume(EslEvent event) {
+        if (consumer == null) return;
+        consumer.consume(event);
+    }
 }
