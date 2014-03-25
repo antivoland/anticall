@@ -340,14 +340,14 @@ public enum Event {
 
     EXE_SCHEDULE;
 
-    private EventConsumer consumer;
+    private EventHandler handler;
 
-    public void setConsumer(EventConsumer consumer) {
-        this.consumer = consumer;
+    public void setHandler(EventHandler handler) {
+        this.handler = handler;
     }
 
-    public void consume(EslEvent event) {
-        if (consumer == null) return;
-        consumer.consume(event);
+    public void handle(EslEvent event) {
+        if (handler == null) return;
+        handler.handle(event);
     }
 }

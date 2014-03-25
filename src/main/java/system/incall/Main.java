@@ -13,7 +13,7 @@ import system.incall.dao.ProfileDaoMorphiaImpl;
 import system.incall.guice.EslModule;
 import system.incall.guice.MorphiaModule;
 import system.incall.model.Event;
-import system.incall.model.EventConsumer;
+import system.incall.model.EventHandler;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,17 +35,17 @@ public class Main {
         Client eslClient = App.injector.getInstance(Client.class);
         eslClient.setEventSubscriptions("plain", "all");
 
-        Event.API.setConsumer(new EventConsumer() {
+        Event.API.setHandler(new EventHandler() {
             @Override
-            public void consume(EslEvent event) {
-                // log.info(event.toString());
+            public void handle(EslEvent event) {
+                log.info("Handle API event");
             }
         });
 
         eslClient.addEventListener(new IEslEventListener() {
             @Override
             public void eventReceived(EslEvent event) {
-                Event.valueOf(event.getEventName()).consume(event);
+                Event.valueOf(event.getEventName()).handle(event);
                 ObjectMapper mapper = new ObjectMapper();
                 try {
                     log.debug(mapper.writeValueAsString(event));
