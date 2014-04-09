@@ -72,7 +72,7 @@ public class Main {
         try {
             log.debug(mapper.writeValueAsString(event));
         } catch (IOException e) {
-            log.warn(e.getMessage());
+            log.warn("Unable to serialize event", e);
         }
         log.info("================================================================================");
     }
