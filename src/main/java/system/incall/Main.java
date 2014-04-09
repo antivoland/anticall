@@ -64,7 +64,7 @@ public class Main {
             }
         });
 
-        eslClient.sendSyncApiCommand("echo", "Foo foo bar");
+        // eslClient.sendSyncApiCommand("echo", "Foo foo bar");
     }
 
     private static void traceEvent(EslEvent event) {
