@@ -346,8 +346,9 @@ public enum Event {
         this.handler = handler;
     }
 
-    public void handle(EslEvent event) {
-        if (handler == null) return;
+    public boolean handle(EslEvent event) {
+        if (handler == null) return false;
         handler.handle(event);
+        return true;
     }
 }

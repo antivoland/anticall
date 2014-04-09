@@ -35,32 +35,45 @@ public class Main {
         Client eslClient = App.injector.getInstance(Client.class);
         eslClient.setEventSubscriptions("plain", "all");
 
-        Event.API.setHandler(new EventHandler() {
+        /*Event.API.setHandler(new EventHandler() {
             @Override
             public void handle(EslEvent event) {
                 log.info("Handle API event");
+            }
+        });*/
+
+        Event.CUSTOM.setHandler(new EventHandler() {
+            @Override
+            public void handle(EslEvent event) {
+                // do nothing
             }
         });
 
         eslClient.addEventListener(new IEslEventListener() {
             @Override
             public void eventReceived(EslEvent event) {
-                Event.valueOf(event.getEventName()).handle(event);
-                ObjectMapper mapper = new ObjectMapper();
-                try {
-                    log.debug(mapper.writeValueAsString(event));
-                } catch (IOException e) {
-                    log.warn(e.getMessage());
+                if (!Event.valueOf(event.getEventName()).handle(event)) {
+                    traceEvent(event);
                 }
-                log.info("================================================================================");
             }
 
             @Override
             public void backgroundJobResultReceived(EslEvent event) {
                 log.info("Background job result received [{}]", event);
+                traceEvent(event);
             }
         });
 
         eslClient.sendSyncApiCommand("echo", "Foo foo bar");
+    }
+
+    private static void traceEvent(EslEvent event) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            log.debug(mapper.writeValueAsString(event));
+        } catch (IOException e) {
+            log.warn(e.getMessage());
+        }
+        log.info("================================================================================");
     }
 }
