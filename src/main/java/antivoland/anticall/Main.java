@@ -1,4 +1,4 @@
-package system.incall;
+package antivoland.anticall;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -8,12 +8,12 @@ import org.freeswitch.esl.client.inbound.Client;
 import org.freeswitch.esl.client.transport.event.EslEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import system.incall.dao.ProfileDao;
-import system.incall.dao.ProfileDaoMorphiaImpl;
-import system.incall.guice.EslModule;
-import system.incall.guice.MorphiaModule;
-import system.incall.model.Event;
-import system.incall.model.EventHandler;
+import antivoland.anticall.dao.ProfileDao;
+import antivoland.anticall.dao.ProfileDaoMorphiaImpl;
+import antivoland.anticall.guice.EslModule;
+import antivoland.anticall.guice.MorphiaModule;
+import antivoland.anticall.model.Event;
+import antivoland.anticall.model.EventHandler;
 
 import java.io.FileInputStream;
 import java.io.IOException;

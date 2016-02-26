@@ -1,4 +1,4 @@
-package system.incall.model;
+package antivoland.anticall.model;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;

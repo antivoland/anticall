@@ -1,9 +1,9 @@
-package system.incall.model;
+package antivoland.anticall.model;
 
 import org.freeswitch.esl.client.inbound.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import system.incall.App;
+import antivoland.anticall.App;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

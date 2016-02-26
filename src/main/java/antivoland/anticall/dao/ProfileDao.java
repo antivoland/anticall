@@ -1,4 +1,4 @@
-package system.incall.dao;
+package antivoland.anticall.dao;
 
 public interface ProfileDao {
     boolean exists(String userId);

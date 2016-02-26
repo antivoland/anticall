@@ -1,4 +1,4 @@
-package system.incall.dao;
+package antivoland.anticall.dao;
 
 import com.google.code.morphia.Morphia;
 import com.google.code.morphia.dao.BasicDAO;

@@ -1,4 +1,4 @@
-package system.incall.guice;
+package antivoland.anticall.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
@@ -7,7 +7,7 @@ import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 import org.freeswitch.esl.client.inbound.Client;
 import org.freeswitch.esl.client.inbound.InboundConnectionFailure;
-import system.incall.App;
+import antivoland.anticall.App;
 
 public class EslModule extends AbstractModule {
     private static final int TIMEOUT_SECONDS = 2;

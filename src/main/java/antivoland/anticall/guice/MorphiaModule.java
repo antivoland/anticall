@@ -1,4 +1,4 @@
-package system.incall.guice;
+package antivoland.anticall.guice;
 
 import com.google.code.morphia.Morphia;
 import com.google.inject.AbstractModule;
@@ -7,8 +7,8 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 import com.mongodb.Mongo;
-import system.incall.App;
-import system.incall.dao.Profile;
+import antivoland.anticall.App;
+import antivoland.anticall.dao.Profile;
 
 import java.net.UnknownHostException;
 
